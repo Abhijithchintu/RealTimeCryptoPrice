@@ -6,7 +6,6 @@ import { setIsLoggedIn} from '../lib/store'
 
 const useAuthorize=()=>{
     const {isLoggedIn} = useSelector(state=>state.cryptoData);
-    console.log('___  isLoggedIn--', isLoggedIn)
     const dispatch=useDispatch();
 
     useEffect(()=>{
@@ -15,12 +14,6 @@ const useAuthorize=()=>{
         .catch(()=>dispatch(setIsLoggedIn(false)));
     },[dispatch]
     );
-
-    useEffect(()=>{
-        if(isLoggedIn){
-            fetch('/api/startWorker');
-        }
-    },[isLoggedIn]);
 
     return {isLoggedIn}
 };

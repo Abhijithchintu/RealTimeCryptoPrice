@@ -15,7 +15,7 @@ export async function WorkerStart() {
     console.log('came near job',job.data.symbol )
     // Process the job
     await jobProcessor.fetchStockPrice(job.data.symbol);
-  }, { connection: redisConnection , autorun: false},); // Adjust concurrency as needed
+  }, { connection: redisConnection , autorun: false, concurrency: 5},); // Adjust concurrency as needed
 
   worker.run()
 

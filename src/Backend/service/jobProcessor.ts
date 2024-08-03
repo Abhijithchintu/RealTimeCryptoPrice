@@ -1,7 +1,6 @@
 import { stockQueue } from './queue';
 import {Stock} from "../models/stock"
-
-const fetch = require('node-fetch');
+import fetch from "node-fetch";
 const stocks = ["bitcoin","ethereum","binancecoin","solana","maker"]
 
 export class jobProcessor{
@@ -33,8 +32,8 @@ export class jobProcessor{
     console.log('starting process')
     setInterval(async () => {
       for (const symbol of stocks) {
-        console.log('symbol',symbol)
-        await stockQueue.add('fetch-price', { symbol });
+        console.log('symbol feteched data',symbol)
+        await stockQueue.add('fetch-price', { symbol },{ removeOnComplete: true, removeOnFail: true },);
       }
     }, 5000);
   }
