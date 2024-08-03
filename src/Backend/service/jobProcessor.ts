@@ -8,7 +8,7 @@ export class jobProcessor{
     const url = `https://api.coingecko.com/api/v3/simple/price?vs_currencies=inr&precision=2&ids=${symbol}`;
     let opts = {
       method: 'GET',
-      headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-ZRCLUopx1u3gXgqDRLaLFtUc'}
+      headers: {accept: 'application/json', 'x-cg-demo-api-key': process.env.COIN_GECKO_API_KEY}
     };
 
     fetch(url, opts)

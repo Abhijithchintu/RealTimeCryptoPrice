@@ -12,7 +12,6 @@ const redisConnection = new Redis({
 export async function WorkerStart() {
   await jobProcessor.addJobs()
   const worker = new Worker('stock-price', async job => {
-    console.log('came near job',job.data.symbol )
     // Process the job
     await jobProcessor.fetchStockPrice(job.data.symbol);
   }, { connection: redisConnection , autorun: false, concurrency: 5},); // Adjust concurrency as needed
